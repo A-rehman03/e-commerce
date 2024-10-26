@@ -1,8 +1,25 @@
-# React + Vite
+# E-Commerce Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+A responsive e-commerce platform built with React.js, Redux Toolkit, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Features
+- User authentication
+- Product listings with detailed pages
+- Shopping cart functionality
+- Multi-step checkout process
+- Order history management
+- Admin panel for managing products
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
+- React.js
+- Redux Toolkit
+- Tailwind CSS
+- Formik and Yup for form handling
+- Fetch API for data fetching
+- Vercel for deployment
+
+## How to Run Locally
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/A-Rehman03/e-commerce.git
