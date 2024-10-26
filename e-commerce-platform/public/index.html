@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Platform</title>
+    <link rel="stylesheet" href="/src/index.css"> <!-- Use relative path for CSS in development -->
+</head>
+
+<body>
+    <header class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold">E-Commerce Platform</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="/" class="hover:underline">Home</a></li>
+                    <li><a href="/products" class="hover:underline">Products</a></li>
+                    <li><a href="/cart" class="hover:underline">Cart</a></li>
+                    <li><a href="/order-history" class="hover:underline">Order History</a></li>
+                    <li><a href="/checkout" class="hover:underline">Checkout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-6">
+        <section>
+            <h2 class="text-2xl font-bold mb-4">Welcome to Our E-Commerce Platform!</h2>
+            <p class="mb-4">Discover a variety of products at amazing prices.</p>
+            <a href="/products" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Shop Now</a>
+        </section>
+
+        <section class="mt-10">
+            <h2 class="text-xl font-bold mb-4">Featured Products</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <img src="https://via.placeholder.com/150" alt="Product Name" class="h-40 w-full object-cover mb-4">
+                    <h3 class="text-lg font-semibold">Product Name</h3>
+                    <p class="text-gray-700">$19.99</p>
+                    <a href="/product/1" class="bg-blue-500 text-white px-4 py-2 rounded-lg mt-2 inline-block">View Details</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white p-4 mt-10">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 E-Commerce Platform. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- In development, Vite will handle module loading -->
+    <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>

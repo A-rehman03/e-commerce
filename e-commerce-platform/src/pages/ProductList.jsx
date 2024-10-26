@@ -1,45 +1,49 @@
-// src/pages/ProductList.jsx
-import React, { useEffect } from 'react';
+// src/pages/ProductDetail.jsx
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setProducts } from '../redux/productSlice';
+import { setProducts } from '../features/ProductSlice';
+import { useParams, Link } from 'react-router-dom';
+import { addToCart } from '../features/cartSlice';
 import axios from 'axios';
 
-const ProductList = () => {
+const ProductDetail = () => {
+  const { id } = useParams();
+  const [product, setProduct] = useState(null);
   const dispatch = useDispatch();
-  const { items: products, status } = useSelector(state => state.products);
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchProduct = async () => {
       try {
-        const response = await axios.get('https://fakestoreapi.com/products'); // Example API
-        dispatch(setProducts(response.data));
+        const response = await axios.get(`https://fakestoreapi.com/products/${id}`);
+        setProduct(response.data);
       } catch (error) {
-        console.error(error);
+        console.error('Error fetching product details:', error);
       }
     };
 
-    fetchProducts();
-  }, [dispatch]);
+    fetchProduct();
+  }, [id]);
 
-  if (status === 'loading') return <p>Loading...</p>;
+  if (!product) return <p>Loading...</p>;
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Products</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-      {products.map(product => (
-  <div key={product.id} className="border p-4 shadow-lg">
-    <Link to={`/products/${product.id}`}>
-      <img src={product.image} alt={product.title} className="h-40 w-full object-cover" />
-      <h2 className="text-xl font-semibold mt-2">{product.title}</h2>
-    </Link>
-    <p className="text-gray-500">${product.price}</p>
-    <button className="bg-blue-500 text-white mt-4 py-2 px-4 rounded">Add to Cart</button>
-  </div>
-))}
+    <div className="container mx-auto p-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <img src={product.image} alt={product.title} className="w-full h-96 object-contain" />
+        <div>
+          <h1 className="text-3xl font-bold mb-4">{product.title}</h1>
+          <p className="text-gray-700 mb-4">{product.description}</p>
+          <p className="text-2xl text-blue-500 mb-4">${product.price}</p>
+          <button
+            onClick={() => dispatch(addToCart(product))}
+            className="bg-green-500 text-white px-6 py-3 rounded-lg"
+          >
+            Add to Cart
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
-export default ProductList;
+export default ProductDetail;
